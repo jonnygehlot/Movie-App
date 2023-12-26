@@ -5,81 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-            text-decoration: none;
-            list-style: none;
-            font-family: sans-serif;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: black;
-        }
-
-        section {
-            padding: 20px 0px;
-        }
-
-        header {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 36px;
-            color: white;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        main {
-            max-width: 1320px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .main {
-            width: 1320px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .main input{
-            padding: 8px 20px;
-        }
-        main figure {
-            flex-basis: 23%;
-            margin: 1%;
-            position: relative;
-        }
-
-        figure img {
-            width: 100%;
-        }
-
-        figure figcaption {
-            width: 100%;
-            color: white;
-            font-size: 25px;
-            position: absolute;
-            text-align: center;
-            bottom: 0px;
-            left: 50%;
-            padding: 10px 0;
-            transform: translateX(-50%);
-            background-color: rgba(205, 7, 50, 0.5);
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -96,30 +22,6 @@
     </section>
 </body>
 
-<script>
-    let moviePrefix = `https://image.tmdb.org/t/p/w1280`;
-    let main = document.querySelector('main')
-    let maindata = "";
-    let getMovies = async () => {
-        let apiURL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1`;
-        let fetchData = await fetch(apiURL);
-        let endGame = await fetchData.json();
-        endGame.results.forEach((e, i) => {
-            maindata = maindata +
-                `<figure>
-                <img src= "${moviePrefix}${e.poster_path}" alt="Title">
-                <figcaption>
-                    ${e.title}
-                </figcaption>
-            </figure>`
-        })
-
-        main.innerHTML = maindata
-    }
-
-    window.addEventListener('load', () => {
-        getMovies()
-    })
-</script>
+<script src="script/script.js"></script>
 
 </html>
